@@ -9,16 +9,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "antd/dist/antd.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SolicitudDeInformacion from './pages/SolicitudDeInformacion';
+import { ConfigProvider } from 'antd';
+import es_ES from 'antd/lib/locale/es_ES'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/solicitud-de-informacion" element={<SolicitudDeInformacion />} />
-        <Route path="invoices" element={<App />} />
-      </Routes>
-    </BrowserRouter>
+    <ConfigProvider locale={es_ES}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/solicitud-de-informacion" element={<SolicitudDeInformacion />} />
+          <Route path="invoices" element={<App />} />
+        </Routes>
+      </BrowserRouter>
+    </ConfigProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
