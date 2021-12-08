@@ -6,15 +6,16 @@ import reportWebVitals from './reportWebVitals';
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "antd/dist/antd.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RegularizacionMigratoria from './pages/RegularizacionMigratoria';
+import SolicitudDeInformacion from './pages/SolicitudDeInformacion';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/regularizacion-migratoria" element={<RegularizacionMigratoria />} />
+        <Route path="/solicitud-de-informacion" element={<SolicitudDeInformacion />} />
         <Route path="invoices" element={<App />} />
       </Routes>
     </BrowserRouter>

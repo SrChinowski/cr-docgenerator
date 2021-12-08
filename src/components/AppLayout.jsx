@@ -7,7 +7,7 @@ const AppLayout = ({children, title}) => {
         <Fragment className='w-100 h-100'>
             <AppNavbar/>
             <Container className='p-5 pt-3 w-100'>
-                <h3>{title}</h3>
+                <h4 style={{color: 'gray'}}>{title}</h4>
                 <hr style={{width: '100%', color: 'black'}}/>
                 {children}
             </Container>
