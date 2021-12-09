@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 import { nacionalidades } from '../helpers/arrays';
 import { DatePicker } from 'antd';
 import img1 from '../assets/img/img1.svg'
+import moment from 'moment';
 
 const SolicitudDeInformacion = () => {
 
@@ -30,7 +31,7 @@ const SolicitudDeInformacion = () => {
     }
 
     const handleDate = (date, dateString) => {
-        setfecha(dateString);
+        setfecha(date);
       }
 
     const generateDocument = () => {
@@ -45,11 +46,12 @@ const SolicitudDeInformacion = () => {
               paragraphLoop: true,
               linebreaks: true,
             });
+            moment.locale('es');
             doc.setData({
               name: name.toUpperCase(),
               country: nacionalidad.toUpperCase(),
               phone: phone,
-              initial_date: fecha,
+              initial_date: `${moment(fecha).format('DD')} de ${moment(fecha).format('MMMM')} del ${moment(fecha).format('YYYY')}`,
               documentacion: docs,
             });
             try {

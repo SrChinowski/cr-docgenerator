@@ -35,7 +35,7 @@ const CambioCondicionVaRP = () => {
     }
 
     const handleDate = (date, dateString) => {
-        setfecha(dateString);
+        setfecha(date);
       }
 
     const generateDocument = () => {
@@ -54,7 +54,7 @@ const CambioCondicionVaRP = () => {
             doc.setData({
               name: name.toUpperCase(),
               country: nacionalidad.toUpperCase(),
-              date: fecha,
+              date: `${moment(fecha).format('DD')} de ${moment(fecha).format('MMMM')} del ${moment(fecha).format('YYYY')}`,
               ref_id:ref_id,
               today: `${moment().format('DD')} de ${moment().format('MMMM')} del ${moment().format('YYYY')}`,
               address: address,
