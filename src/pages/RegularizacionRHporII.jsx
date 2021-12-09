@@ -6,7 +6,7 @@ import PizZip from 'pizzip';
 import PizZipUtils from 'pizzip/utils/index.js';
 import { saveAs } from 'file-saver';
 import { nacionalidades } from '../helpers/arrays';
-import { DatePicker } from 'antd';
+import { DatePicker, Radio, Space } from 'antd';
 import img1 from '../assets/img/img1.svg'
 import moment from 'moment';
 import 'moment/locale/es';
@@ -18,6 +18,8 @@ const config = {
 
 const RegularizacionRHporII = () => {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+    const [gender, setgender] = useState(1);
+    const [place, setplace] = useState(1);
     const [name, setname] = useState('');
     const [nacionalidad, setnacionalidad] = useState('');
     const [cur, setcur] = useState('');
@@ -27,6 +29,8 @@ const RegularizacionRHporII = () => {
     const handlevalue = (type, value) => {
         switch(type) {
             case 'name': setname(value); break;
+            case 'gender': setgender(value); break;
+            case 'place': setplace(value); break;
             case 'national': setnacionalidad(value); break;
             case 'cur': setcur(value); break;
             case 'address': setaddress(value); break;
@@ -53,6 +57,8 @@ const RegularizacionRHporII = () => {
             moment.locale('es');
             doc.setData({
               name: name.toUpperCase(),
+              gender: gender === 1 ? 'El' : 'La',
+              place: place === 1 ? 'Ciudad' : 'Estado',
               country: nacionalidad.toUpperCase(),
               date: `${moment(fecha).format('DD')} de ${moment(fecha).format('MMMM')} del ${moment(fecha).format('YYYY')}`,
               cur:cur,
@@ -114,6 +120,26 @@ const RegularizacionRHporII = () => {
             <Row>
                 <Col xs={12} sm={12} md={6} lg={6} xl={6} className='d-flex flex-column justify-content-center'>
                     <Form>
+                      <Row className='mb-3'>
+                        <Col>
+                          <p className='mb-1 form-label'>Género</p>
+                          <Radio.Group onChange={({target}) => handlevalue('gender', target.value)} value={gender}>
+                              <Space direction="vertical">
+                              <Radio value={1}>Hombre</Radio>
+                              <Radio value={2}>Mujer</Radio>
+                              </Space>
+                          </Radio.Group>
+                          </Col>
+                          <Col>
+                              <p className='mb-1 form-label'>Lugar del escrito</p>
+                              <Radio.Group onChange={({target}) => handlevalue('place', target.value)} value={place}>
+                                  <Space direction="vertical">
+                                  <Radio value={1}>Ciudad de México</Radio>
+                                  <Radio value={2}>Estado de México</Radio>
+                                  </Space>
+                              </Radio.Group>
+                          </Col>
+                      </Row>
                         <Form.Group className="mb-3" controlId="formGroupEmail">
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type="text" 
