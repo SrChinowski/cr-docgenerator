@@ -14,6 +14,7 @@ import es_ES from 'antd/lib/locale/es_ES'
 import RegularizacionRHporII from './pages/RegularizacionRHporII';
 import CambioCondicionVaRP from './pages/CambioCondicionVaRP';
 import RegularizacionRPporRCR from './pages/RegularizacionRPporRCR';
+import CambioDomicilio from './pages/CambioDomicilio';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="/regularizacion-rh-ii" element={<RegularizacionRHporII />} />
           <Route path="/cambio-visitante-rp" element={<CambioCondicionVaRP />} />
           <Route path="/regularizacion-rp-ref" element={<RegularizacionRPporRCR />} />
+          <Route path="/cambio-domicilio" element={<CambioDomicilio />} />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>

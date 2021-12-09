@@ -12,24 +12,30 @@ import moment from 'moment';
 import 'moment/locale/es';
 
 const config = {
-    path: './regularizacion-rp-refugiado.docx',
-    fileName: 'regularizacion-rp-refugiado.docx'
+    path: './cambio-domicilio.docx',
+    fileName: 'cambio-domicilio.docx'
 }
 
-const RegularizacionRPporRCR = () => {
+const CambioDomicilio = () => {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+    const [gender, setgender] = useState('');
+    const [place, setplace] = useState('');
     const [name, setname] = useState('');
     const [nacionalidad, setnacionalidad] = useState('');
     const [ref_id, setref_id] = useState('');
     const [address, setaddress] = useState('');
+    const [newAddress, setnewAddress] = useState('');
     const [fecha, setfecha] = useState('');
 
     const handlevalue = (type, value) => {
         switch(type) {
             case 'name': setname(value); break;
+            case 'gender': setgender(value); break;
+            case 'place': setplace(value); break;
             case 'national': setnacionalidad(value); break;
             case 'ref_id': setref_id(value); break;
             case 'address': setaddress(value); break;
+            case 'new_address': setnewAddress(value); break;
             default:  break
         }
     }
@@ -53,11 +59,14 @@ const RegularizacionRPporRCR = () => {
             moment.locale('es');
             doc.setData({
               name: name.toUpperCase(),
+              gender: gender,
+              place: place,
               country: nacionalidad.toUpperCase(),
               date: `${moment(fecha).format('DD')} de ${moment(fecha).format('MMMM')} del ${moment(fecha).format('YYYY')}`,
               ref_id:ref_id,
               today: `${moment().format('DD')} de ${moment().format('MMMM')} del ${moment().format('YYYY')}`,
               address: address,
+              new_address: newAddress
             });
             try {
               // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
@@ -110,18 +119,32 @@ const RegularizacionRPporRCR = () => {
     }
 
     return ( 
-        <AppLayout title={'Regularización de Residente por Reconocimiento de Refugiado'}>
+        <AppLayout title={'Cambio de Domicilio'}>
             <Row>
                 <Col xs={12} sm={12} md={6} lg={6} xl={6} className='d-flex flex-column justify-content-center'>
                     <Form>
-                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                        <Form.Group className="mb-3" controlId="gender">
+                            <Form.Label>Género</Form.Label>
+                            <Form.Control type="text" 
+                                placeholder="El o La" 
+                                onChange={({target}) => handlevalue('gender', target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="place">
+                            <Form.Label>Lugar</Form.Label>
+                            <Form.Control type="text" 
+                                placeholder="Ciudad o Estado" 
+                                onChange={({target}) => handlevalue('place', target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="name">
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type="text" 
                                 placeholder="Nombre Apellido" 
                                 onChange={({target}) => handlevalue('name', target.value)}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                        <Form.Group className="mb-3" controlId="country">
                             <Form.Label>Nacionalidad</Form.Label>
                             <Form.Select type="text"
                                 placeholder="Nacionalidad" 
@@ -132,21 +155,20 @@ const RegularizacionRPporRCR = () => {
                                 })}
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formGroupPassword">
-                            <Form.Label>No. Constancia de Reconocimiento</Form.Label>
-                            <Form.Control type="text"
-                                placeholder="ref_id" 
-                                onChange={({target}) => handlevalue('ref_id', target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Group className="mb-3" controlId="address">
                             <Form.Label>Dirección</Form.Label>
                             <Form.Control as="textarea" rows={2} 
                                 onChange={({target}) => handlevalue('address', target.value)}
                             />
                         </Form.Group>
+                        <Form.Group className="mb-3" controlId="new_address">
+                            <Form.Label>Nueva Dirección</Form.Label>
+                            <Form.Control as="textarea" rows={2} 
+                                onChange={({target}) => handlevalue('new_address', target.value)}
+                            />
+                        </Form.Group>
                         <Col>
-                            <p className='m-0 mb-1'>Fecha de reconocimiento de condición</p>
+                            <p className='m-0 mb-1'>Fecha de cambio de domicilio</p>
                             <DatePicker className='w-100' format={dateFormatList} 
                                 onChange={handleDate}
                             />
@@ -167,4 +189,4 @@ const RegularizacionRPporRCR = () => {
      );
 }
  
-export default RegularizacionRPporRCR;
+export default CambioDomicilio;
