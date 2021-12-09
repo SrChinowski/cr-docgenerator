@@ -10,6 +10,7 @@ const AppNavbar = () => {
                     <Nav.Link href="/solicitud-de-informacion">Solicitud de Informacion</Nav.Link>
                     <Nav.Link href="/regularizacion-rh-ii">Regularización RH II</Nav.Link>
                     <Nav.Link href="/cambio-visitante-rp">Cambio Condición Visitante a RP</Nav.Link>
+                    <Nav.Link href="/regularizacion-rp-ref">Regularización RP</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
