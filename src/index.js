@@ -11,6 +11,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SolicitudDeInformacion from './pages/SolicitudDeInformacion';
 import { ConfigProvider } from 'antd';
 import es_ES from 'antd/lib/locale/es_ES'
+import RegularizacionRHporII from './pages/RegularizacionRHporII';
+import CambioCondicionVaRP from './pages/CambioCondicionVaRP';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +21,8 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/solicitud-de-informacion" element={<SolicitudDeInformacion />} />
-          <Route path="invoices" element={<App />} />
+          <Route path="/regularizacion-rh-ii" element={<RegularizacionRHporII />} />
+          <Route path="/cambio-visitante-rp" element={<CambioCondicionVaRP />} />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>

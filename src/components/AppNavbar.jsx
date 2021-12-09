@@ -8,7 +8,8 @@ const AppNavbar = () => {
                 <Navbar.Brand href="/">Casa Refugiados</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/solicitud-de-informacion">Solicitud de Informacion</Nav.Link>
-                    <Nav.Link href="#pricing">Documento 2</Nav.Link>
+                    <Nav.Link href="/regularizacion-rh-ii">Regularización RH II</Nav.Link>
+                    <Nav.Link href="/cambio-visitante-rp">Cambio Condición Visitante a RP</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
