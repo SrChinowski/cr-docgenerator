@@ -52,13 +52,6 @@ const SolicitudDeInformacion = () => {
               initial_date: fecha,
               documentacion: docs,
             });
-            alert(JSON.stringify({
-                name: name.toUpperCase(),
-                country: nacionalidad.toUpperCase(),
-                phone: phone,
-                initial_date: fecha,
-                documentacion: docs,
-              }))
             try {
               // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
               doc.render();
